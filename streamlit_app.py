@@ -9,7 +9,7 @@ from openpyxl.styles import Font, PatternFill
 
 # Configuração da página
 st.set_page_config(
-    page_title="Previsão de Resistência do Concreto - VERSÃO BETA",
+    page_title="Previsão de Resistência do Concreto",
     page_icon="https://raw.githubusercontent.com/dimasbetioli/concrete-ia-app/refs/heads/main/mult.png",
     layout="centered",
     initial_sidebar_state="expanded"
@@ -23,7 +23,7 @@ st.image(
 
 # Título principal
 st.markdown(
-    "<h1 style='text-align: center; color: #2196F3; font-size: 30px;'> PROJETO - IA APLICADA À PREVISÃO DA RESISTÊNCIA DE CONCRETOS AOS 28 DIAS</h1>",
+    "<h1 style='text-align: center; color: #2196F3; font-size: 30px;'> PROJETO - IA APLICADA À PREVISÃO DA RESISTÊNCIA DE CONCRETOS AOS 28 DIAS - VERSÃO BETA</h1>",
     unsafe_allow_html=True,
 )
 
