@@ -83,10 +83,82 @@ if st.session_state.tipo_entrada == "Enter Manually":
     if 'entradas' not in st.session_state:
         st.session_state.entradas = []
 
-    if opcao == "CT_Cimento e CT_Agua (Cement and Water)":
-        model_path = "models/model_quant_0.500_set1.pkl"
+    if opcao == "CT_Cimento e CT_Agua":
+        model_path = "modelo1.pkl"
         st.session_state.entradas = [
-            # ... (inputs conforme a versão anterior)
+            st.number_input("CT_Cimento (kg/m³):", min_value=0.0, step=1.0, key="ct_cimento"),
+            st.number_input("CT_Agua (kg/m³):", min_value=0.0, step=1.0, key="ct_agua")
+        ]
+    
+    elif opcao == "CT_Cimento, CT_Agua, e resistências reais (3d, 7d, 28d)":
+        model_path = "modelo2.pkl"
+        st.session_state.entradas = [
+            st.number_input("CT_Cimento (kg/m³):", min_value=0.0, step=1.0, key="ct_cimento"),
+            st.number_input("CT_Agua (kg/m³):", min_value=0.0, step=1.0, key="ct_agua"),
+            st.number_input("cimento_Resistencia_real_3d (MPa):", min_value=0.0, step=1.0, key="resistencia_3d"),
+            st.number_input("cimento_Resistencia_real_7d (MPa):", min_value=0.0, step=1.0, key="resistencia_7d"),
+            st.number_input("cimento_Resistencia_real_28d (MPa):", min_value=0.0, step=1.0, key="resistencia_28d")
+        ]
+    
+    elif opcao == "CT_Cimento, CT_Agua, resistências reais, e Fc_7d":
+        model_path = "modelo3.pkl"
+        st.session_state.entradas = [
+            st.number_input("CT_Cimento (kg/m³):", min_value=0.0, step=1.0, key="ct_cimento"),
+            st.number_input("CT_Agua (kg/m³):", min_value=0.0, step=1.0, key="ct_agua"),
+            st.number_input("cimento_Resistencia_real_3d (MPa):", min_value=0.0, step=1.0, key="resistencia_3d"),
+            st.number_input("cimento_Resistencia_real_7d (MPa):", min_value=0.0, step=1.0, key="resistencia_7d"),
+            st.number_input("cimento_Resistencia_real_28d (MPa):", min_value=0.0, step=1.0, key="resistencia_28d"),
+            st.number_input("Fc_7d (MPa):", min_value=0.0, step=1.0, key="fc_7d")
+        ]
+    
+    elif opcao == "CT_Cimento, CT_Agua, resistências reais, Fc_7d, e aditivos":
+        model_path = "modelo4.pkl"
+        st.session_state.entradas = [
+            st.number_input("CT_Cimento (kg/m³):", min_value=0.0, step=1.0, key="ct_cimento"),
+            st.number_input("CT_Agua (kg/m³):", min_value=0.0, step=1.0, key="ct_agua"),
+            st.number_input("cimento_Resistencia_real_3d (MPa):", min_value=0.0, step=1.0, key="resistencia_3d"),
+            st.number_input("cimento_Resistencia_real_7d (MPa):", min_value=0.0, step=1.0, key="resistencia_7d"),
+            st.number_input("cimento_Resistencia_real_28d (MPa):", min_value=0.0, step=1.0, key="resistencia_28d"),
+            st.number_input("Fc_7d (MPa):", min_value=0.0, step=1.0, key="fc_7d"),
+            st.number_input("CT_Silica (kg/m³):", min_value=0.0, step=1.0, key="ct_silica"),
+            st.number_input("CT_Plastificante (kg/m³):", min_value=0.0, step=1.0, key="ct_plastificante"),
+            st.number_input("CT_Polifuncional (kg/m³):", min_value=0.0, step=1.0),
+            st.number_input("CT_Superplastificante (kg/m³):", min_value=0.0, step=1.0),
+            st.number_input("CT_Brita_0 (kg/m³):", min_value=0.0, step=1.0),
+            st.number_input("CT_Brita_1 (kg/m³):", min_value=0.0, step=1.0),
+            st.number_input("CT_Areia_natural (kg/m³):", min_value=0.0, step=1.0),
+            st.number_input("CT_Areia_artificial (kg/m³):", min_value=0.0, step=1.0),
+            st.number_input("CT_AC (kg/m³):", min_value=0.0, step=1.0),
+            st.number_input("CT_Aditivo (kg/m³):", min_value=0.0, step=1.0),
+            st.number_input("CT_Teor_de_Argamassa (kg/m³):", min_value=0.0, step=1.0),
+            st.number_input("CT_Teor_de_Agua (kg/m³):", min_value=0.0, step=1.0),
+        ]
+    elif opcao == "Todas as variáveis":
+        model_path = "modelo5.pkl"
+        st.session_state.entradas = [
+            st.number_input("CT_Cimento (kg/m³):", min_value=0.0, step=1.0, key="ct_cimento"),
+            st.number_input("CT_Agua (kg/m³):", min_value=0.0, step=1.0, key="ct_agua"),
+            st.number_input("cimento_Resistencia_real_3d (MPa):", min_value=0.0, step=1.0, key="resistencia_3d"),
+            st.number_input("cimento_Resistencia_real_7d (MPa):", min_value=0.0, step=1.0, key="resistencia_7d"),
+            st.number_input("cimento_Resistencia_real_28d (MPa):", min_value=0.0, step=1.0, key="resistencia_28d"),
+            st.number_input("Fc_7d (MPa):", min_value=0.0, step=1.0, key="fc_7d"),
+            st.number_input("CT_Silica (kg/m³):", min_value=0.0, step=1.0, key="ct_silica"),
+            st.number_input("CT_Plastificante (kg/m³):", min_value=0.0, step=1.0, key="ct_plastificante"),
+            st.number_input("CT_Polifuncional (kg/m³):", min_value=0.0, step=1.0),
+            st.number_input("CT_Superplastificante (kg/m³):", min_value=0.0, step=1.0),
+            st.number_input("CT_Brita_0 (kg/m³):", min_value=0.0, step=1.0),
+            st.number_input("CT_Brita_1 (kg/m³):", min_value=0.0, step=1.0),
+            st.number_input("CT_Areia_natural (kg/m³):", min_value=0.0, step=1.0),
+            st.number_input("CT_Areia_artificial (kg/m³):", min_value=0.0, step=1.0),
+            st.number_input("CT_AC (kg/m³):", min_value=0.0, step=1.0),
+            st.number_input("CT_Aditivo (kg/m³):", min_value=0.0, step=1.0),
+            st.number_input("CT_Teor_de_Argamassa (kg/m³):", min_value=0.0, step=1.0),
+            st.number_input("CT_Teor_de_Agua (kg/m³):", min_value=0.0, step=1.0),
+            st.number_input("Volume (m³):", min_value=0.0, step=1.0),
+            st.number_input("Mesp_Brita_0 (kg/m³):", min_value=0.0, step=1.0),
+            st.number_input("Mesp_Brita_1 (kg/m³):", min_value=0.0, step=1.0),
+            st.number_input("Tempo_de_transporte (s):", min_value=0.0, step=1.0),
+            st.number_input("Slump (cm):", min_value=0.0, step=1.0),
         ]
 
     # Botão para calcular
@@ -114,13 +186,87 @@ if st.session_state.tipo_entrada == "Enter Manually":
 
 
 elif st.session_state.tipo_entrada == "Upload Excel":
-    # ...(resto do código para upload de excel conforme a versão anterior)
+    # Criar duas colunas: uma para o texto e outra para o botão
+    col1, col2 = st.columns([3, 1])  # Ajuste as proporções conforme necessário
+
+    # Coluna da esquerda com o texto
+    with col1:
+        st.write(
+            "Para fazer o upload do Excel, utilize o modelo ao lado&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
+            "<span style='font-size: 30px; color: #4CAF50;'>&#8594;</span>",
+            "<span style='font-size: 30px; color: #4CAF50;'>&#8594;</span>",
+            "<span style='font-size: 30px; color: #4CAF50;'>&#8594;</span>",
+            "<span style='font-size: 30px; color: #4CAF50;'>&#8594;</span>",
+            "<span style='font-size: 30px; color: #4CAF50;'>&#8594;</span>",
+            "<span style='font-size: 30px; color: #4CAF50;'>&#8594;</span>",
+            "<span style='font-size: 30px; color: #4CAF50;'>&#8594;</span>",
+            unsafe_allow_html=True
+        )
+
+    # Coluna da direita com o botão de download
+    with col2:
+        # Adicionar espaço acima do botão
+        st.markdown("<div style='margin-top: 0px;'></div>", unsafe_allow_html=True)
+        with open("modelo.xlsx", "rb") as f:
+            st.download_button(
+                label="Baixar modelo",
+                data=f,
+                file_name="modelo.xlsx",
+                mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+            )
+
+    # Opções de configuração para o Excel
+    opcao_excel = st.radio(
+        "Escolha a configuração de entrada:",
+        [
+            "CT_Cimento e CT_Agua",
+            "CT_Cimento, CT_Agua, e resistências reais (3d, 7d, 28d)",
+            "CT_Cimento, CT_Agua, resistências reais, e Fc_7d",
+            "CT_Cimento, CT_Agua, resistências reais, Fc_7d, e aditivos",
+            "Todas as variáveis"
+        ]
+    )
+
+    # Carregar o arquivo Excel
+    uploaded_file = st.file_uploader("Escolha um arquivo Excel", type=["xlsx", "xls"])
 
     if uploaded_file is not None:
-        #...(resto do código para processar excel conforme a versão anterior)
-
+        df = pd.read_excel(uploaded_file)
+    
         try:
-            #...(resto do código para escolher modelo conforme a opção escolhida)
+            # Seleção do modelo e das variáveis de entrada com base na configuração escolhida
+            if opcao_excel == "CT_Cimento e CT_Agua":
+                model = joblib.load("modelo1.pkl")
+                selected_columns = ["CT_Cimento", "CT_Agua"]
+    
+            elif opcao_excel == "CT_Cimento, CT_Agua, e resistências reais (3d, 7d, 28d)":
+                model = joblib.load("modelo2.pkl")
+                selected_columns = ["CT_Cimento", "CT_Agua", "cimento_Resistencia_real_3d", 
+                                    "cimento_Resistencia_real_7d", "cimento_Resistencia_real_28d"]
+    
+            elif opcao_excel == "CT_Cimento, CT_Agua, resistências reais, e Fc_7d":
+                model = joblib.load("modelo3.pkl")
+                selected_columns = ["CT_Cimento", "CT_Agua", "cimento_Resistencia_real_3d", 
+                                    "cimento_Resistencia_real_7d", "cimento_Resistencia_real_28d", "Fc_7d"]
+    
+            elif opcao_excel == "CT_Cimento, CT_Agua, resistências reais, Fc_7d, e aditivos":
+                model = joblib.load("modelo4.pkl")
+                selected_columns = ["CT_Cimento", "CT_Agua", "cimento_Resistencia_real_3d", 
+                                    "cimento_Resistencia_real_7d", "cimento_Resistencia_real_28d", 
+                                    "Fc_7d", "CT_Silica", "CT_Plastificante", "CT_Polifuncional", 
+                                    "CT_Superplastificante", "CT_Brita_0", "CT_Brita_1", "CT_Areia_natural", 
+                                    "CT_Areia_artificial", "CT_AC", "CT_Aditivo", "CT_Teor_de_Argamassa", 
+                                    "CT_Teor_de_Agua"]
+    
+            elif opcao_excel == "Todas as variáveis":
+                model = joblib.load("modelo5.pkl")
+                selected_columns = ["CT_Cimento", "CT_Agua", "cimento_Resistencia_real_3d", 
+                                    "cimento_Resistencia_real_7d", "cimento_Resistencia_real_28d", 
+                                    "Fc_7d", "CT_Silica", "CT_Plastificante", "CT_Polifuncional", 
+                                    "CT_Superplastificante", "CT_Brita_0", "CT_Brita_1", "CT_Areia_natural", 
+                                    "CT_Areia_artificial", "CT_AC", "CT_Aditivo", "CT_Teor_de_Argamassa", 
+                                    "CT_Teor_de_Agua", "Volume", "Mesp_Brita_0", "Mesp_Brita_1", 
+                                    "Tempo_de_transporte", "Slump"]
 
             # Carregar os modelos (mediana, inferior e superior)
             model_mediana = joblib.load(model_path)
@@ -141,8 +287,43 @@ elif st.session_state.tipo_entrada == "Upload Excel":
             input_data["Limite Inferior (95%)"] = previsoes_inferior
             input_data["Limite Superior (95%)"] = previsoes_superior
 
-            #...(resto do código para exibir e salvar o excel conforme a versão anterior)
-
+            # Destaque na tela
+            def highlight_column(val):
+                # Aplica estilo apenas para a coluna "Previsões"
+                return 'background-color: #FFFF00; font-weight: bold;' if val == "Previsões" else None
+    
+            st.write("Variáveis de entrada acompanhadas das respectivas previsões:")
+            st.dataframe(input_data.style.applymap(highlight_column, subset=["Previsões"]))
+    
+            # Salvar o DataFrame atualizado em um novo arquivo Excel
+            output_file = "previsoes_" + uploaded_file.name
+            input_data.to_excel(output_file, index=False)
+    
+            # Aplicar estilo no Excel
+            wb = load_workbook(output_file)
+            ws = wb.active
+    
+            # Aplicar destaque à coluna "Previsões"
+            yellow_fill = PatternFill(start_color="FFFF00", end_color="FFFF00", fill_type="solid")
+            bold_font = Font(bold=True)
+    
+            previsoes_col_idx = len(selected_columns) + 1  # Índice da coluna "Previsões"
+            for row in ws.iter_rows(min_row=2, min_col=previsoes_col_idx, max_col=previsoes_col_idx):
+                for cell in row:
+                    cell.fill = yellow_fill
+                    cell.font = bold_font
+    
+            wb.save(output_file)
+    
+            # Oferecer o arquivo para download
+            with open(output_file, "rb") as f:
+                st.download_button(
+                    label=("Baixar Excel com as previsões"),
+                    data=f,
+                    file_name=output_file,
+                    mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+                )
+    
         except FileNotFoundError:
             st.error("Modelo não encontrado. Verifique o caminho do modelo.")
         except Exception as e:
