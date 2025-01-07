@@ -9,7 +9,7 @@ from openpyxl.styles import Font, PatternFill
 
 # Configuração da página
 st.set_page_config(
-    page_title="Previsão de Resistência do Concreto",
+    page_title="Previsão de Resistência do Concreto - VERSÃO BETA",
     page_icon="https://raw.githubusercontent.com/dimasbetioli/concrete-ia-app/refs/heads/main/mult.png",
     layout="centered",
     initial_sidebar_state="expanded"
@@ -86,14 +86,14 @@ if st.session_state.tipo_entrada == "Inserir manualmente":
         st.session_state.entradas = []
 
     if opcao == "CT_Cimento e CT_Agua":
-        model_path = "modelo1.pkl"
+        model_path = "models/model_quant_0.500_set1.pkl"
         st.session_state.entradas = [
             st.number_input("CT_Cimento (kg/m³):", min_value=0.0, step=1.0, key="ct_cimento"),
             st.number_input("CT_Agua (kg/m³):", min_value=0.0, step=1.0, key="ct_agua")
         ]
     
     elif opcao == "CT_Cimento, CT_Agua, e resistências reais (3d, 7d, 28d)":
-        model_path = "modelo2.pkl"
+        model_path = "models/model_quant_0.500_set2.pkl"
         st.session_state.entradas = [
             st.number_input("CT_Cimento (kg/m³):", min_value=0.0, step=1.0, key="ct_cimento"),
             st.number_input("CT_Agua (kg/m³):", min_value=0.0, step=1.0, key="ct_agua"),
@@ -103,7 +103,7 @@ if st.session_state.tipo_entrada == "Inserir manualmente":
         ]
     
     elif opcao == "CT_Cimento, CT_Agua, resistências reais, e Fc_7d":
-        model_path = "modelo3.pkl"
+        model_path = "models/model_quant_0.500_set3.pkl"
         st.session_state.entradas = [
             st.number_input("CT_Cimento (kg/m³):", min_value=0.0, step=1.0, key="ct_cimento"),
             st.number_input("CT_Agua (kg/m³):", min_value=0.0, step=1.0, key="ct_agua"),
@@ -114,7 +114,7 @@ if st.session_state.tipo_entrada == "Inserir manualmente":
         ]
     
     elif opcao == "CT_Cimento, CT_Agua, resistências reais, Fc_7d, e aditivos":
-        model_path = "modelo4.pkl"
+        model_path = "models/model_quant_0.500_set4.pkl"
         st.session_state.entradas = [
             st.number_input("CT_Cimento (kg/m³):", min_value=0.0, step=1.0, key="ct_cimento"),
             st.number_input("CT_Agua (kg/m³):", min_value=0.0, step=1.0, key="ct_agua"),
@@ -136,7 +136,7 @@ if st.session_state.tipo_entrada == "Inserir manualmente":
             st.number_input("CT_Teor_de_Agua (kg/m³):", min_value=0.0, step=1.0),
         ]
     elif opcao == "Todas as variáveis":
-        model_path = "modelo5.pkl"
+        model_path = "models/model_quant_0.500_set5.pkl"
         st.session_state.entradas = [
             st.number_input("CT_Cimento (kg/m³):", min_value=0.0, step=1.0, key="ct_cimento"),
             st.number_input("CT_Agua (kg/m³):", min_value=0.0, step=1.0, key="ct_agua"),
