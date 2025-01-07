@@ -68,11 +68,11 @@ if st.session_state.tipo_entrada == "Enter Manually":
     opcao = st.radio(
         "Choose input configuration:",
         [
-            "CT_Cimento e CT_Agua (Cement and Water)",
-            "CT_Cimento, CT_Agua, e resistências reais (3d, 7d, 28d) (Cement, Water, and Real Strengths)",
-            "CT_Cimento, CT_Agua, resistências reais, e Fc_7d (Cement, Water, Real Strengths, and Fc_7d)",
-            "CT_Cimento, CT_Agua, resistências reais, Fc_7d, e aditivos (Cement, Water, Real Strengths, Fc_7d, and Additives)",
-            "Todas as variáveis (All Variables)"
+            "CT_Cimento e CT_Agua",
+            "CT_Cimento, CT_Agua, e resistências reais (3d, 7d, 28d)",
+            "CT_Cimento, CT_Agua, resistências reais, e Fc_7d",
+            "CT_Cimento, CT_Agua, resistências reais, Fc_7d, e aditivos",
+            "Todas as variáveis"
         ]
     )
 
