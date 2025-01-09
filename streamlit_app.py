@@ -290,7 +290,7 @@ elif st.session_state.tipo_entrada == "Carregar arquivo Excel":
             previsoes_superior = model_sup.predict(X)
 
             # Adicionar as previsões ao DataFrame
-            input_data["Previsão (Mediana)"] = previsoes_mediana
+            input_data["Previsões"] = previsoes_mediana
             input_data["Limite Inferior (95%)"] = previsoes_inferior
             input_data["Limite Superior (95%)"] = previsoes_superior
 
