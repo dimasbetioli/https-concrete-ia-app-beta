@@ -238,21 +238,25 @@ elif st.session_state.tipo_entrada == "Carregar arquivo Excel":
         try:
             # Seleção do modelo e das variáveis de entrada com base na configuração escolhida
             if opcao_excel == "CT_Cimento e CT_Agua":
-                model = joblib.load("models/model_quant_0.500_set1.pkl")
+                model_path = "models/model_quant_0.500_set1.pkl"
+                model = joblib.load(model_path)
                 selected_columns = ["CT_Cimento", "CT_Agua"]
     
             elif opcao_excel == "CT_Cimento, CT_Agua, e resistências reais (3d, 7d, 28d)":
-                model = joblib.load("models/model_quant_0.500_set2.pkl")
+                model_path = "models/model_quant_0.500_set2.pkl"
+                model = joblib.load(model_path)
                 selected_columns = ["CT_Cimento", "CT_Agua", "cimento_Resistencia_real_3d", 
                                     "cimento_Resistencia_real_7d", "cimento_Resistencia_real_28d"]
     
             elif opcao_excel == "CT_Cimento, CT_Agua, resistências reais, e Fc_7d":
-                model = joblib.load("models/model_quant_0.500_set3.pkl")
+                model_path = "models/model_quant_0.500_set3.pkl"
+                model = joblib.load(model_path)
                 selected_columns = ["CT_Cimento", "CT_Agua", "cimento_Resistencia_real_3d", 
                                     "cimento_Resistencia_real_7d", "cimento_Resistencia_real_28d", "Fc_7d"]
     
             elif opcao_excel == "CT_Cimento, CT_Agua, resistências reais, Fc_7d, e aditivos":
-                model = joblib.load("models/model_quant_0.500_set4.pkl")
+                model_path = "models/model_quant_0.500_set4.pkl"
+                model = joblib.load(model_path)
                 selected_columns = ["CT_Cimento", "CT_Agua", "cimento_Resistencia_real_3d", 
                                     "cimento_Resistencia_real_7d", "cimento_Resistencia_real_28d", 
                                     "Fc_7d", "CT_Silica", "CT_Plastificante", "CT_Polifuncional", 
@@ -261,7 +265,8 @@ elif st.session_state.tipo_entrada == "Carregar arquivo Excel":
                                     "CT_Teor_de_Agua"]
     
             elif opcao_excel == "Todas as variáveis":
-                model = joblib.load("models/model_quant_0.500_set5.pkl")
+                model_path = "models/model_quant_0.500_set5.pkl"
+                model = joblib.load(model_path)
                 selected_columns = ["CT_Cimento", "CT_Agua", "cimento_Resistencia_real_3d", 
                                     "cimento_Resistencia_real_7d", "cimento_Resistencia_real_28d", 
                                     "Fc_7d", "CT_Silica", "CT_Plastificante", "CT_Polifuncional", 
