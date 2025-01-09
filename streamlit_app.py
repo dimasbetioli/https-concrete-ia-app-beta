@@ -23,7 +23,7 @@ st.image(
 
 # Título principal
 st.markdown(
-    "<h1 style='text-align: center; color: #2196F3; font-size: 30px;'> PROJETO - IA APLICADA À PREVISÃO DA RESISTÊNCIA DE CONCRETOS AOS 28 DIAS</h1>",
+    "<h1 style='text-align: center; color: #2196F3; font-size: 30px;'> PROJETO - IA APLICADA À PREVISÃO DA RESISTÊNCIA DE CONCRETOS AOS 28 DIAS - VERSÃO BETA</h1>",
     unsafe_allow_html=True,
 )
 
