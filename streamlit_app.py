@@ -7,66 +7,68 @@ from io import BytesIO
 from openpyxl import load_workbook
 from openpyxl.styles import Font, PatternFill
 
-# --- Page Configuration ---
+# Configuração da página
 st.set_page_config(
-    page_title="Concrete Strength Prediction with Confidence Intervals (v2.0)",
+    page_title="Previsão de Resistência do Concreto",
     page_icon="https://raw.githubusercontent.com/dimasbetioli/concrete-ia-app/refs/heads/main/mult.png",
     layout="centered",
-    initial_sidebar_state="expanded",
+    initial_sidebar_state="expanded"
 )
 
-# --- Add Image Header ---
+# Adicionar imagem no topo da página
 st.image(
     "https://raw.githubusercontent.com/dimasbetioli/concrete-ia-app/refs/heads/main/topo.png",
-    use_container_width=True,
+    use_container_width=True
 )
 
-# --- Main Title ---
+# Título principal
 st.markdown(
-    "<h1 style='text-align: center; color: #2196F3; font-size: 30px;'> PROJECT - AI Applied to Predicting Concrete Strength at 28 Days (v2.0)</h1>",
+    "<h1 style='text-align: center; color: #2196F3; font-size: 30px;'> PROJETO - IA APLICADA À PREVISÃO DA RESISTÊNCIA DE CONCRETOS AOS 28 DIAS</h1>",
     unsafe_allow_html=True,
 )
 
-# --- Introduction ---
+# Introdução
 st.markdown(
-    '<h3 style="text-align: center; color: #2C2C2C; font-size: 14px; margin-bottom: 20px;">Team led by Prof André C.P.L.F. de Carvalho</h3>',
+    '<h3 style="text-align: center; color: #2C2C2C; font-size: 14px; margin-bottom: 20px;">Equipe liderada pelo Prof André C.P.L.F. de Carvalho</h3>',
     unsafe_allow_html=True,
 )
 
-# --- Input Options: Manual or Excel File ---
+# Opções de entrada: manual ou por arquivo
+# Título informativo
 st.markdown(
     """
     <p style="text-align: center; font-size: 16px; color: #2C2C2C;">
-    <span style="font-size: 30px; color: #4CAF50;">&#8595;</span> Choose whether to enter data manually or upload an Excel file <span style="font-size: 30px; color: #4CAF50;">&#8595;</span>
+        <span style="font-size: 30px; color: #4CAF50;">&#8595;</span> Escolha se deseja inserir os dados manualmente ou carregar um arquivo Excel <span style="font-size: 30px; color: #4CAF50;">&#8595;</span>
     </p>
     """,
-    unsafe_allow_html=True,
+    unsafe_allow_html=True
 )
 
-# --- Session State for User Choices ---
+# Inicializando o estado da escolha
 if 'tipo_entrada' not in st.session_state:
     st.session_state.tipo_entrada = None
 
-# --- Center and Align Buttons Side-by-Side ---
-col1, col2 = st.columns(2)
+# Centralizar e exibir botões lado a lado
+col1, col2 = st.columns(2)  # Criando duas colunas de igual largura para exibir os botões lado a lado
+
 with col1:
-    if st.button("Enter Data Manually"):
-        st.session_state.tipo_entrada = "Enter Manually"
+    if st.button("Inserir manualmente"):
+        st.session_state.tipo_entrada = "Inserir manualmente"
 
 with col2:
-    if st.button("Upload Excel File"):
-        st.session_state.tipo_entrada = "Upload Excel"
+    if st.button("Carregar arquivo Excel"):
+        st.session_state.tipo_entrada = "Carregar arquivo Excel"
 
-# --- Add Space Above Button ---
+# Adicionar espaço acima do botão
 st.markdown("<div style='margin-top: 30px;'></div>", unsafe_allow_html=True)
 
-# --- Conditional Logic Based on User Choice ---
-if st.session_state.tipo_entrada == "Enter Manually":
-    st.write("You chose to enter data manually.")
+# Lógica condicional baseada na escolha do usuário
+if st.session_state.tipo_entrada == "Inserir manualmente":
+    st.write("Você escolheu inserir os dados manualmente.")
 
-    # --- Input Options ---
+    # Opções de configuração
     opcao = st.radio(
-        "Choose input configuration:",
+        "Escolha a configuração de entrada:",
         [
             "CT_Cimento e CT_Agua",
             "CT_Cimento, CT_Agua, e resistências reais (3d, 7d, 28d)",
