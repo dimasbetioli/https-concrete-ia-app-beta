@@ -187,7 +187,7 @@ if st.session_state.tipo_entrada == "Inserir manualmente":
             st.error("Por favor, insira valores numéricos positivos válidos para todas as variáveis.")
 
 
-elif st.session_state.tipo_entrada == "Upload Excel":
+elif st.session_state.tipo_entrada == "Carregar arquivo Excel":
     # Criar duas colunas: uma para o texto e outra para o botão
     col1, col2 = st.columns([3, 1])  # Ajuste as proporções conforme necessário
 
