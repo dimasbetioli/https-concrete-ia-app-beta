@@ -86,7 +86,7 @@ if st.session_state.tipo_entrada == "Inserir manualmente":
         st.session_state.entradas = []
 
     if opcao == "CT_Cimento e CT_Agua":
-        model_path = "models\model_quant_0.500_set1.pkl"
+        model_path = ".models\model_quant_0.500_set1.pkl"
         st.session_state.entradas = [
             st.number_input("CT_Cimento (kg/m³):", min_value=0.0, step=1.0, key="ct_cimento"),
             st.number_input("CT_Agua (kg/m³):", min_value=0.0, step=1.0, key="ct_agua")
